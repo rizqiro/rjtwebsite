@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layanan — Rakha Jaya Teknik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181F;
+    --charcoal:#1D232C;
+    --charcoal2:#2A3140;
+    --steel:#5B6472;
+    --steel-light:#9BA3AF;
+    --paper:#F6F4EF;
+    --paper2:#EFECE3;
+    --paper-line:#E4E0D6;
+    --orange:#E56A0F;
+    --orange-dark:#C6590A;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:12px;font-weight:600;letter-spacing:0.12em;margin-bottom:12px;font-family:'JetBrains Mono',monospace;}
+  .eyebrow::before{content:"";width:20px;height:1.5px;background:var(--orange);}
+  .eyebrow.on-dark{color:var(--orange);}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;font-size:14px;font-weight:600;border:none;cursor:pointer;white-space:nowrap;border-radius:2px;transition:transform .12s ease,background .15s ease,border-color .15s ease,color .15s ease;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--orange);color:var(--ink);}
+  .btn-primary:hover{background:#f27d20;}
+  .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.3);}
+  .btn-outline:hover{border-color:var(--white);}
+  .btn svg{width:15px;height:15px;flex-shrink:0;}
+
+  /* ---------- HEADER (shared) ---------- */
+  header{background:var(--ink);position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto;gap:24px;}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{width:38px;height:38px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ink);font-size:19px;flex-shrink:0;clip-path:polygon(0 0,100% 0,100% 75%,75% 100%,0 100%);}
+  .logo-text{line-height:1.15;}
+  .logo-text .top{color:var(--white);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.02em;}
+  .logo-text .bottom{color:var(--orange);font-size:10.5px;letter-spacing:0.14em;font-weight:600;}
+  nav.primary-nav{display:flex;gap:34px;}
+  nav.primary-nav a{color:#C6CAD2;font-size:14.5px;font-weight:500;position:relative;padding:6px 0;white-space:nowrap;transition:color .15s ease;}
+  nav.primary-nav a:hover{color:var(--white);}
+  nav.primary-nav a.active{color:var(--orange);}
+  nav.primary-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--orange);}
+  .menu-toggle{display:none;background:none;border:none;color:var(--white);padding:6px;cursor:pointer;}
+
+  .wa-float{position:fixed;right:26px;bottom:26px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,0.28);z-index:70;transition:transform .15s ease;}
+  .wa-float:hover{transform:scale(1.06);}
+  .wa-float svg{width:27px;height:27px;color:var(--white);}
+
+  /* ---------- SERVICES HERO ---------- */
+  .svc-hero{position:relative;overflow:hidden;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06);}
+  .svc-hero-bg{position:absolute;inset:0;background:linear-gradient(155deg,var(--ink),var(--charcoal2));}
+  .svc-hero-bg img{width:100%;height:100%;object-fit:cover;display:block;}
+  .svc-hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(15,18,24,0.97) 0%, rgba(15,18,24,0.82) 38%, rgba(15,18,24,0.4) 70%, rgba(15,18,24,0.18) 100%);}
+  .svc-hero-inner{position:relative;z-index:2;padding:56px 0 40px;}
+  .svc-hero-inner h1{color:var(--white);font-size:44px;margin-bottom:14px;}
+  .svc-hero-inner p{color:#C4C9D2;font-size:14.5px;max-width:460px;margin-bottom:22px;}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--steel-light);}
+  .breadcrumb a{color:var(--orange);font-weight:600;}
+  .breadcrumb span.sep{color:#5B6472;}
+
+  /* ---------- INTRO ---------- */
+  .svc-intro{padding:64px 0;border-bottom:1px solid var(--paper-line);}
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  .intro-grid h2{font-size:27px;line-height:1.3;}
+  .intro-grid h2 span{color:var(--orange);}
+  .intro-grid p{color:var(--steel);font-size:14.5px;}
+
+  /* ---------- SERVICE CATEGORY BLOCKS ---------- */
+  .svc-cat{padding:64px 0;}
+  .svc-cat-head{max-width:620px;margin:0 auto 32px;text-align:center;}
+  .svc-cat-head h3{font-size:15px;letter-spacing:0.08em;font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--ink);margin-bottom:8px;}
+  .svc-cat-head p{color:var(--steel);font-size:13.5px;}
+  .svc-card-grid{display:grid;gap:20px;}
+  .svc-card-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+  .svc-card-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  .svc-card{background:var(--white);border:1px solid var(--paper-line);display:flex;flex-direction:column;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;}
+  .svc-card:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,24,31,0.08);}
+  .svc-card-photo{aspect-ratio:4/3;overflow:hidden;background:linear-gradient(155deg,var(--ink),var(--charcoal2));}
+  .svc-card-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .svc-card-body{position:relative;padding:34px 18px 20px;}
+  .svc-card-icn{position:absolute;top:-22px;left:18px;width:44px;height:44px;border-radius:50%;background:var(--ink);border:3px solid var(--white);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(20,24,31,0.22);}
+  .svc-card-icn svg{width:18px;height:18px;color:var(--white);}
+  .svc-card-body h4{font-size:15px;margin-bottom:6px;}
+  .svc-card-body p{font-size:12.5px;color:var(--steel);line-height:1.55;margin-bottom:14px;}
+  .svc-more{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--orange-dark);}
+  .svc-more svg{width:14px;height:14px;transition:transform .15s ease;}
+  .svc-more:hover svg{transform:translateX(3px);}
+
+  /* ---------- CTA BAND ---------- */
+  .svc-cta{background:var(--ink);color:var(--white);padding:40px 0;}
+  .svc-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+  .svc-cta-left{display:flex;align-items:flex-start;gap:18px;max-width:640px;}
+  .svc-cta-icn{width:52px;height:52px;background:rgba(229,106,15,0.14);border:1px solid rgba(229,106,15,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .svc-cta-icn svg{width:24px;height:24px;color:var(--orange);}
+  .svc-cta-left h2{font-size:24px;color:var(--white);margin:2px 0 8px;}
+  .svc-cta-left p{font-size:13.5px;color:#B8BEC8;max-width:440px;}
+  .svc-cta-right{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;}
+
+  /* ---------- TRUST ROW ---------- */
+  .svc-trust{padding:40px 0 64px;background:var(--paper);}
+  .svc-trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .svc-trust-item{display:flex;align-items:center;gap:12px;}
+  .svc-trust-item .icn{width:42px;height:42px;min-width:42px;border-radius:50%;border:1.5px solid var(--paper-line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .svc-trust-item .icn svg{width:19px;height:19px;color:var(--orange-dark);}
+  .svc-trust-item b{display:block;font-size:13.5px;}
+  .svc-trust-item span{display:block;font-size:12px;color:var(--steel);margin-top:1px;line-height:1.4;}
+
+  /* ---------- FOOTER (shared) ---------- */
+  footer{background:var(--charcoal);color:#AEB4BF;padding-top:56px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .footer-brand p{font-size:13px;color:#7C838F;margin-top:12px;max-width:230px;}
+  .footer-social{display:flex;gap:10px;margin-top:20px;}
+  .footer-social a{width:34px;height:34px;border:1px solid rgba(255,255,255,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .15s ease,background .15s ease;}
+  .footer-social a:hover{border-color:var(--orange);background:rgba(229,106,15,0.1);}
+  .footer-social svg{width:15px;height:15px;color:#C6CAD2;}
+  .footer-col h4{color:var(--orange);font-size:12px;letter-spacing:0.1em;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-weight:500;}
+  .footer-col ul li{margin-bottom:11px;}
+  .footer-col ul li a{font-size:13.5px;color:#AEB4BF;transition:color .15s ease;}
+  .footer-col ul li a:hover{color:var(--white);}
+  .footer-contact li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#AEB4BF;margin-bottom:14px;}
+  .footer-contact svg{width:16px;height:16px;color:var(--orange);flex-shrink:0;margin-top:1px;}
+  .footer-bottom{text-align:center;padding:22px 0;font-size:12.5px;color:#6C7280;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1080px){
+    .svc-card-grid.cols-4{grid-template-columns:repeat(2,1fr);}
+    .svc-card-grid.cols-3{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:980px){
+    nav.primary-nav{display:none;}
+    .menu-toggle{display:block;}
+    .intro-grid{grid-template-columns:1fr;gap:20px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .wrap,.header-inner{padding-left:20px;padding-right:20px;}
+    .svc-hero-inner h1{font-size:32px;}
+    .svc-card-grid.cols-4, .svc-card-grid.cols-3{grid-template-columns:1fr;}
+    .svc-cta-inner{flex-direction:column;align-items:flex-start;}
+    .svc-cta-right{width:100%;}
+    .svc-cta-right .btn{flex:1;justify-content:center;}
+    .svc-trust-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .btn-header{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">R</div>
+      <div class="logo-text"><div class="top">RAKHA</div><div class="bottom">JAYA TEKNIK</div></div>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="services.html#engineering">Engineering</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#contact" class="btn btn-primary btn-header">
+      Request a Quote
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="menu-toggle" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="wa-float" aria-label="Chat WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.7.44 3.36 1.29 4.83L2 22l5.4-1.42a9.9 9.9 0 0 0 4.64 1.18h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.13-2.9-7-1.87-1.87-4.35-2.85-7.01-2.85zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.52 3.68-8.2 8.22-8.2 2.2 0 4.26.86 5.82 2.42a8.15 8.15 0 0 1 2.4 5.79c0 4.53-3.68 8.2-8.22 8.2z"/></svg>
+</a>
+
+<!-- ================= SERVICES HERO ================= -->
+<section class="svc-hero">
+  <div class="svc-hero-bg">
+    <!-- PLACEHOLDER PHOTO: ganti dengan foto pengelasan / bengkel fabrikasi Rakha Jaya Teknik -->
+    <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d3985?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Proses pengelasan di bengkel fabrikasi">
+  </div>
+  <div class="svc-hero-scrim"></div>
+  <div class="wrap svc-hero-inner">
+    <div class="eyebrow on-dark">LAYANAN KAMI</div>
+    <h1>Services</h1>
+    <p>Kami menyediakan layanan fabrikasi dan engineering yang dirancang untuk memenuhi kebutuhan Anda, dari proyek sederhana hingga solusi industri kompleks.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span>Services</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="svc-intro">
+  <div class="wrap intro-grid">
+    <div>
+      <div class="eyebrow">DUA SOLUSI, SATU KOMITMEN</div>
+      <h2>Fabrikasi untuk <span>bangunan.</span><br>Engineering untuk <span>industri.</span></h2>
+    </div>
+    <div>
+      <p>Rakha Jaya Teknik menghadirkan dua layanan utama yang saling melengkapi. Kami membangun struktur yang kuat untuk ruang Anda, dan solusi engineering yang tepat untuk proses produksi Anda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FABRICATION ================= -->
+<section class="svc-cat" id="fabrication">
+  <div class="wrap">
+    <div class="svc-cat-head">
+      <h3>FABRICATION</h3>
+      <p>Solusi konstruksi baja dan metal untuk kebutuhan hunian, komersial, dan infrastruktur.</p>
+    </div>
+    <div class="svc-card-grid cols-4">
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Canopy & Carport" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></span>
+          <h4>Canopy & Carport</h4>
+          <p>Canopy rumah, carport, kanopi baja ringan dengan desain modern dan kokoh.</p>
+          <a href="index.html?filter=canopy#projects" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1590959651373-a3db0f38a961?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Gates & Fences" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4v16M9 4v16M15 4v16M19 4v16"/><path d="M3 9h18M3 15h18"/></svg></span>
+          <h4>Gates & Fences</h4>
+          <p>Pagar besi, pagar minimalis, pintu geser, pintu lipat, dan berbagai model pagar.</p>
+          <a href="index.html?filter=residential#projects" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Steel Structures" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l6-4 6 4v11M9 21v-6h6v6"/></svg></span>
+          <h4>Steel Structures</h4>
+          <p>Struktur baja, rangka bangunan, mezzanine, kanopi besar, dan konstruksi lainnya.</p>
+          <a href="index.html?filter=industrial#projects" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d3985?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Custom Metal Fabrication" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
+          <h4>Custom Metal Fabrication</h4>
+          <p>Fabrikasi logam custom sesuai kebutuhan, mulai dari railing, tangga, hingga aksesoris.</p>
+          <a href="index.html#projects" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENGINEERING & CUSTOM MANUFACTURING ================= -->
+<section class="svc-cat" id="engineering" style="background:var(--paper2);">
+  <div class="wrap">
+    <div class="svc-cat-head">
+      <h3>ENGINEERING & CUSTOM MANUFACTURING</h3>
+      <p>Solusi engineering dan manufaktur khusus untuk kebutuhan industri dan proses produksi.</p>
+    </div>
+    <div class="svc-card-grid cols-3">
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Custom Manufacturing Tools" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8 5.7 21.2 8 13.8 2 9.4h7.6Z"/></svg></span>
+          <h4>Custom Manufacturing Tools</h4>
+          <p>Peralatan khusus produksi yang dirancang untuk meningkatkan efisiensi dan produktivitas.</p>
+          <a href="index.html#solutions" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Jigs & Fixtures" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="10" rx="1"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <h4>Jigs & Fixtures</h4>
+          <p>Jig dan fixture presisi untuk proses perakitan, pengelasan, pemesinan, dan kontrol kualitas.</p>
+          <a href="index.html#solutions" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Production Equipment" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg></span>
+          <h4>Production Equipment</h4>
+          <p>Peralatan dan mesin produksi custom sesuai kebutuhan proses dan kapasitas Anda.</p>
+          <a href="index.html#solutions" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&amp;w=600&amp;auto=format&amp;fit=crop&amp;sat=-30" alt="Machine Components" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span>
+          <h4>Machine Components</h4>
+          <p>Komponen mesin custom seperti bracket, shaft, roller, gear, housing, dan berbagai part lainnya.</p>
+          <a href="index.html#solutions" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1590959651373-a3db0f38a961?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Equipment Modification" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></svg></span>
+          <h4>Equipment Modification</h4>
+          <p>Modifikasi, perbaikan, dan peningkatan mesin untuk performa dan umur pakai yang lebih baik.</p>
+          <a href="index.html#solutions" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-photo">
+          <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&amp;w=600&amp;auto=format&amp;fit=crop&amp;flip=h" alt="Prototype & Custom Engineering" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-card-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12.5 11 15l4-5"/></svg></span>
+          <h4>Prototype & Custom Engineering</h4>
+          <p>Pembuatan prototype dan rekayasa custom dari ide, konsep, gambar, hingga produk jadi.</p>
+          <a href="index.html#solutions" class="svc-more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="svc-cta">
+  <div class="wrap svc-cta-inner">
+    <div class="svc-cta-left">
+      <span class="svc-cta-icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      <div>
+        <div class="eyebrow on-dark">Punya kebutuhan khusus?</div>
+        <h2>Mari diskusikan proyek Anda.</h2>
+        <p>Tim kami siap membantu memberikan solusi terbaik untuk proyek fabrikasi dan engineering Anda.</p>
+      </div>
+    </div>
+    <div class="svc-cta-right">
+      <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.7.44 3.36 1.29 4.83L2 22l5.4-1.42a9.9 9.9 0 0 0 4.64 1.18h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.13-2.9-7-1.87-1.87-4.35-2.85-7.01-2.85zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.52 3.68-8.2 8.22-8.2 2.2 0 4.26.86 5.82 2.42a8.15 8.15 0 0 1 2.4 5.79c0 4.53-3.68 8.2-8.22 8.2z"/></svg>
+        Chat di WhatsApp
+      </a>
+      <a href="index.html#contact" class="btn btn-primary">
+        Request a Quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST ROW ================= -->
+<section class="svc-trust">
+  <div class="wrap svc-trust-grid">
+    <div class="svc-trust-item">
+      <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      <span class="lbl"><b>Konsultasi Gratis</b><span>Diskusi kebutuhan proyek tanpa biaya.</span></span>
+    </div>
+    <div class="svc-trust-item">
+      <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-8Z"/></svg></span>
+      <span class="lbl"><b>Respon Cepat</b><span>Kami merespon setiap permintaan dengan cepat.</span></span>
+    </div>
+    <div class="svc-trust-item">
+      <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span class="lbl"><b>Kualitas Terjamin</b><span>Pengerjaan rapi, kuat, dan sesuai standar.</span></span>
+    </div>
+    <div class="svc-trust-item">
+      <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+      <span class="lbl"><b>Tepat Waktu</b><span>Komitmen pada jadwal yang disepakati.</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-mark">R</div>
+          <div class="logo-text"><div class="top">RAKHA</div><div class="bottom">JAYA TEKNIK</div></div>
+        </a>
+        <p>Fabrication • Engineering • Custom Solutions</p>
+        <div class="footer-social">
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.7.44 3.36 1.29 4.83L2 22l5.4-1.42a9.9 9.9 0 0 0 4.64 1.18h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.13-2.9-7C17.18 2.98 14.7 2 12.04 2z"/></svg></a>
+          <a href="https://instagram.com/rakha.jayateknik" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>NAVIGASI</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="index.html#projects">Projects</a></li><li><a href="services.html#engineering">Engineering</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>LAYANAN</h4>
+        <ul><li><a href="services.html#fabrication">Fabrication</a></li><li><a href="index.html?filter=canopy#projects">Canopy & Carport</a></li><li><a href="index.html?filter=residential#projects">Gates & Fences</a></li><li><a href="index.html?filter=industrial#projects">Steel Structures</a></li><li><a href="services.html#fabrication">Custom Fabrication</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>ENGINEERING</h4>
+        <ul><li><a href="services.html#engineering">Engineering</a></li><li><a href="index.html#solutions">Jigs & Fixtures</a></li><li><a href="index.html#solutions">Production Tools</a></li><li><a href="services.html#engineering">Machine Components</a></li><li><a href="services.html#engineering">Equipment Modification</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-grid" style="grid-template-columns:1fr;border:none;padding-top:24px;padding-bottom:24px;">
+      <div class="footer-col" style="max-width:340px;">
+        <h4>KONTAK</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+62 812-3456-7890</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>info@rakhajayateknik.com</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Jl. Industri Raya No. 123, Karawang, Jawa Barat</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2024 Rakha Jaya Teknik. All Rights Reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
