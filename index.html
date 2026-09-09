@@ -66,8 +66,8 @@
 
   /* ---------- HERO ---------- */
   .hero{position:relative;overflow:hidden;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06);}
-  .hero-bg{position:absolute;inset:0;}
-  .hero-bg svg{width:100%;height:100%;}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(155deg,var(--ink),var(--charcoal2));}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;display:block;}
   .hero-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(15,18,24,0.96) 0%, rgba(15,18,24,0.72) 42%, rgba(15,18,24,0.28) 78%, rgba(15,18,24,0.15) 100%);}
   .hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:76px 32px 44px;}
   .hero h1{color:var(--white);font-size:46px;line-height:1.14;font-weight:700;max-width:600px;margin-bottom:16px;}
@@ -105,7 +105,7 @@
   .svc-photo-grid{display:grid;grid-template-columns:repeat(4,1fr);}
   .svc-photo{background:var(--white);border-top:1px solid var(--paper-line);}
   .svc-photo-thumb{aspect-ratio:1/1;background:linear-gradient(155deg,var(--ink),var(--charcoal2));position:relative;overflow:hidden;border-right:1px solid rgba(255,255,255,0.06);}
-  .svc-photo-thumb svg{width:100%;height:100%;}
+  .svc-photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
   .svc-photo-cap{padding:12px 10px;text-align:center;border-right:1px solid var(--paper-line);}
   .svc-photo-cap span{font-size:12.5px;font-weight:600;color:var(--ink);}
   .svc-photo:last-child .svc-photo-thumb, .svc-photo:last-child .svc-photo-cap{border-right:none;}
@@ -135,7 +135,7 @@
   .card{background:var(--white);border:1px solid var(--paper-line);display:flex;flex-direction:column;overflow:hidden;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;}
   .card:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,24,31,0.09);}
   .card-thumb{aspect-ratio:4/3;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--ink) 0%,var(--charcoal) 60%,var(--charcoal2) 100%);}
-  .card-thumb svg{width:100%;height:100%;}
+  .card-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
   .card-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;}
   .card-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:500;color:var(--orange-dark);letter-spacing:0.05em;}
   .card-body h3{font-size:14px;color:var(--ink);}
@@ -152,7 +152,7 @@
   .sol-list svg{width:17px;height:17px;color:var(--orange);flex-shrink:0;}
   .sol-photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
   .sol-photo{aspect-ratio:1/0.82;background:linear-gradient(155deg,var(--charcoal2),var(--charcoal));position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.08);}
-  .sol-photo svg{width:100%;height:100%;}
+  .sol-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .sol-photo .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(0deg,rgba(0,0,0,0.75),transparent);font-size:11.5px;font-weight:600;color:var(--white);}
   .sol-photo.cta-cell{background:var(--orange-dark);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;}
   .sol-photo.cta-cell p{font-size:13.5px;font-weight:600;color:var(--white);line-height:1.35;}
@@ -180,8 +180,8 @@
   .about-contact{padding:0 0 0;}
   .ac-grid{display:grid;grid-template-columns:0.85fr 1fr 0.72fr;}
   .ac-about{background:var(--ink);color:var(--white);padding:56px 40px;position:relative;overflow:hidden;}
-  .ac-about-bg{position:absolute;inset:0;opacity:0.35;}
-  .ac-about-bg svg{width:100%;height:100%;}
+  .ac-about-bg{position:absolute;inset:0;opacity:0.55;background:linear-gradient(155deg,var(--charcoal2),var(--ink));}
+  .ac-about-bg img{width:100%;height:100%;object-fit:cover;display:block;}
   .ac-about-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,31,0.6),rgba(20,24,31,0.96));}
   .ac-about > *{position:relative;z-index:1;}
   .ac-about h2{font-size:25px;color:var(--white);margin-bottom:14px;}
@@ -222,7 +222,7 @@
   .ig-head .handle{color:var(--orange-dark);font-weight:600;}
   .ig-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;}
   .ig-tile{aspect-ratio:1/1;background:linear-gradient(155deg,var(--ink),var(--charcoal2));position:relative;overflow:hidden;}
-  .ig-tile svg{width:100%;height:100%;}
+  .ig-tile img{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--charcoal);color:#AEB4BF;padding-top:56px;}
@@ -301,37 +301,8 @@
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-bg">
-    <svg viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <rect width="1400" height="700" fill="#1D232C"/>
-      <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
-        <line x1="0" y1="175" x2="1400" y2="175"/><line x1="0" y1="350" x2="1400" y2="350"/><line x1="0" y1="525" x2="1400" y2="525"/>
-        <line x1="233" y1="0" x2="233" y2="700"/><line x1="466" y1="0" x2="466" y2="700"/><line x1="700" y1="0" x2="700" y2="700"/><line x1="933" y1="0" x2="933" y2="700"/><line x1="1166" y1="0" x2="1166" y2="700"/>
-      </g>
-      <!-- house block -->
-      <rect x="620" y="80" width="620" height="480" fill="#262D39"/>
-      <rect x="660" y="140" width="120" height="180" fill="#171B22"/>
-      <rect x="800" y="140" width="120" height="180" fill="#171B22"/>
-      <rect x="940" y="140" width="120" height="180" fill="#12151B"/>
-      <rect x="672" y="160" width="96" height="140" fill="#4A3A22" opacity="0.85"/>
-      <rect x="812" y="160" width="96" height="140" fill="#3A2E1B" opacity="0.7"/>
-      <!-- canopy steel frame -->
-      <g stroke="#0E1116" stroke-width="14" stroke-linecap="round">
-        <line x1="560" y1="200" x2="1360" y2="120"/>
-        <line x1="560" y1="220" x2="1360" y2="140"/>
-      </g>
-      <g stroke="#E56A0F" stroke-width="6" stroke-linecap="round" opacity="0.9">
-        <line x1="600" y1="207" x2="600" y2="470"/>
-        <line x1="1320" y1="128" x2="1320" y2="470"/>
-        <line x1="960" y1="163" x2="960" y2="470"/>
-      </g>
-      <g stroke="rgba(255,255,255,0.12)" stroke-width="3">
-        <line x1="700" y1="213" x2="700" y2="460"/>
-        <line x1="820" y1="203" x2="820" y2="460"/>
-        <line x1="1080" y1="152" x2="1080" y2="460"/>
-        <line x1="1200" y1="140" x2="1200" y2="460"/>
-      </g>
-      <rect x="560" y="560" width="800" height="10" fill="rgba(255,255,255,0.06)"/>
-    </svg>
+    <!-- PLACEHOLDER PHOTO: ganti src dengan foto asli rumah + kanopi/carport Rakha Jaya Teknik -->
+    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Rumah modern dengan kanopi dan carport baja">
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
@@ -600,35 +571,33 @@
 </footer>
 
 <script>
-/* ---------- Icon illustration library (line-art, reused across sections) ---------- */
-const icons = {
-  canopy: `<path d="M40 140 L200 90 L360 140" stroke="#E56A0F" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="70" y1="140" x2="70" y2="230" stroke="#8A93A0" stroke-width="5" stroke-linecap="round"/><line x1="330" y1="140" x2="330" y2="230" stroke="#8A93A0" stroke-width="5" stroke-linecap="round"/><line x1="200" y1="115" x2="200" y2="230" stroke="#8A93A0" stroke-width="4" stroke-linecap="round" opacity="0.6"/><line x1="120" y1="230" x2="280" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>`,
-  carport: `<rect x="60" y="150" width="280" height="8" fill="#E56A0F"/><line x1="80" y1="158" x2="80" y2="235" stroke="#8A93A0" stroke-width="5" stroke-linecap="round"/><line x1="320" y1="158" x2="320" y2="235" stroke="#8A93A0" stroke-width="5" stroke-linecap="round"/><path d="M120 210 h160 a10 10 0 0 1 10 10 v10 h-180 v-10 a10 10 0 0 1 10 -10 z" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="4"/><circle cx="140" cy="232" r="9" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="4"/><circle cx="260" cy="232" r="9" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="4"/>`,
-  gate: `<line x1="70" y1="70" x2="70" y2="230" stroke="#E56A0F" stroke-width="6" stroke-linecap="round"/><line x1="330" y1="70" x2="330" y2="230" stroke="#E56A0F" stroke-width="6" stroke-linecap="round"/><line x1="70" y1="90" x2="330" y2="90" stroke="#8A93A0" stroke-width="4"/><line x1="70" y1="210" x2="330" y2="210" stroke="#8A93A0" stroke-width="4"/>${[110,150,190,230,270,290].map(x=>`<line x1="${x}" y1="90" x2="${x}" y2="210" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/>`).join('')}`,
-  steel: `${[90,150,210,270,330].map((x,i)=>`<line x1="${x}" y1="70" x2="${x}" y2="230" stroke="${i%2===0?'#E56A0F':'#8A93A0'}" stroke-width="5" stroke-linecap="round"/>`).join('')}<line x1="90" y1="110" x2="330" y2="110" stroke="rgba(255,255,255,0.4)" stroke-width="4"/><line x1="90" y1="190" x2="330" y2="190" stroke="rgba(255,255,255,0.4)" stroke-width="4"/>`,
-  laser: `<circle cx="200" cy="150" r="78" fill="none" stroke="#E56A0F" stroke-width="4"/><circle cx="200" cy="150" r="52" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/><circle cx="200" cy="150" r="26" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/>`,
-  jig: `<rect x="130" y="110" width="140" height="90" rx="4" fill="none" stroke="#E56A0F" stroke-width="4.5"/><circle cx="200" cy="155" r="26" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="4"/><circle cx="145" cy="122" r="6" fill="rgba(255,255,255,0.5)"/><circle cx="255" cy="122" r="6" fill="rgba(255,255,255,0.5)"/><circle cx="145" cy="188" r="6" fill="rgba(255,255,255,0.5)"/><circle cx="255" cy="188" r="6" fill="rgba(255,255,255,0.5)"/>`,
-  flange: `<circle cx="200" cy="150" r="70" fill="none" stroke="#8A93A0" stroke-width="4.5"/><circle cx="200" cy="150" r="26" fill="none" stroke="#E56A0F" stroke-width="5"/>${[0,45,90,135,180,225,270,315].map(a=>{const rad=a*Math.PI/180;const x=200+52*Math.cos(rad),y=150+52*Math.sin(rad);return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" fill="rgba(255,255,255,0.5)"/>`;}).join('')}`,
-  machine: `<rect x="120" y="90" width="160" height="120" rx="4" fill="none" stroke="#E56A0F" stroke-width="4.5"/><rect x="145" y="115" width="110" height="42" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/><circle cx="160" cy="185" r="8" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3"/><circle cx="200" cy="185" r="8" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3"/><circle cx="240" cy="185" r="8" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>`,
-  custom: `<path d="M140 200 L140 140 L200 100 L260 140 L260 200 Z" fill="none" stroke="#E56A0F" stroke-width="4.5" stroke-linejoin="round"/><line x1="140" y1="140" x2="260" y2="140" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/><circle cx="200" cy="170" r="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/>`,
-  tooling: `<path d="M150 90 v50 l-25 25 v55 h150 v-55 l-25 -25 v-50" fill="none" stroke="#E56A0F" stroke-width="4.5" stroke-linejoin="round"/><line x1="150" y1="115" x2="250" y2="115" stroke="rgba(255,255,255,0.5)" stroke-width="3.5"/>`
+/* ---------- Foto placeholder (Unsplash, permanent CDN URL) ----------
+   Bukan ilustrasi vektor buatan tangan — ini foto sungguhan sebagai contoh tata letak.
+   GANTI URL di objek PHOTO / tiap array di bawah dengan foto asli produk & proyek Anda
+   kapan saja: cukup timpa string URL-nya, tidak perlu ubah HTML/CSS lain. */
+function unsplash(id, w){ return `https://images.unsplash.com/photo-${id}?q=80&w=${w||800}&auto=format&fit=crop`; }
+const PHOTO = {
+  house:        '1449844908441-8829872d2607', // rumah modern (kanopi/carport/teras)
+  construction: '1541888946425-d81bb19240f5', // proyek konstruksi / struktur baja
+  welding:      '1565793298595-6a879b1d3985', // percikan las / fabrikasi logam
+  welder2:      '1590959651373-a3db0f38a961', // tukang las / pagar & gerbang besi
+  factory:      '1517420704952-d9f39e95b43e', // interior pabrik / mesin produksi
+  gears:        '1567789884554-0b844b597180'  // komponen mesin / jig & fixture
 };
-function gridBg(){return `<pattern id="p${Math.random().toString(36).slice(2,8)}" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern>`;}
-function thumb(iconKey){
-  const pid = 'p'+Math.random().toString(36).slice(2,8);
-  return `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="${pid}" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs><rect width="400" height="300" fill="url(#${pid})"/><g>${icons[iconKey]}</g></svg>`;
+function photoImg(id, w, alt){
+  return `<img src="${unsplash(id,w)}" alt="${alt}" loading="lazy" onerror="this.remove()">`;
 }
 
 /* Service fabrication photo grid */
 const svcPhotos = [
-  {icon:'canopy', label:'Canopy & Carport'},
-  {icon:'gate', label:'Gates & Fences'},
-  {icon:'steel', label:'Steel Structures'},
-  {icon:'custom', label:'Custom Metal Fabrication'}
+  {photo:PHOTO.house, label:'Canopy & Carport'},
+  {photo:PHOTO.welder2, label:'Gates & Fences'},
+  {photo:PHOTO.construction, label:'Steel Structures'},
+  {photo:PHOTO.welding, label:'Custom Metal Fabrication'}
 ];
 document.getElementById('svc-photo-grid').innerHTML = svcPhotos.map(s=>`
   <div class="svc-photo">
-    <div class="svc-photo-thumb">${thumb(s.icon)}</div>
+    <div class="svc-photo-thumb">${photoImg(s.photo,500,s.label)}</div>
     <div class="svc-photo-cap"><span>${s.label}</span></div>
   </div>`).join('');
 
@@ -650,18 +619,18 @@ document.getElementById('eng-icon-grid').innerHTML = engIcons.map(e=>`
 
 /* Projects grid + filter */
 const projects = [
-  {icon:'canopy', filter:['canopy','residential'], label:'CANOPY', title:'Canopy Minimalis', desc:'Kanopi rumah dengan rangka baja dan atap polycarbonate.'},
-  {icon:'carport', filter:['canopy','residential'], label:'CARPORT', title:'Carport Modern', desc:'Carport kuat dan elegan untuk melindungi kendaraan.'},
-  {icon:'gate', filter:['residential','commercial'], label:'GATES & FENCES', title:'Pagar Besi Minimalis', desc:'Pagar besi dengan desain minimalis dan finishing premium.'},
-  {icon:'canopy', filter:['canopy','residential'], label:'CANOPY', title:'Canopi Teras', desc:'Kanopi teras rumah dengan desain modern.'},
-  {icon:'steel', filter:['industrial','commercial'], label:'STEEL STRUCTURES', title:'Struktur Baja Ringan', desc:'Konstruksi baja ringan untuk berbagai kebutuhan.'},
-  {icon:'gate', filter:['residential','commercial'], label:'GATES & FENCES', title:'Pagar Sliding', desc:'Pagar sliding otomatis dengan desain modern.'}
+  {photo:PHOTO.house, filter:['canopy','residential'], label:'CANOPY', title:'Canopy Minimalis', desc:'Kanopi rumah dengan rangka baja dan atap polycarbonate.'},
+  {photo:PHOTO.house, filter:['canopy','residential'], label:'CARPORT', title:'Carport Modern', desc:'Carport kuat dan elegan untuk melindungi kendaraan.'},
+  {photo:PHOTO.welder2, filter:['residential','commercial'], label:'GATES & FENCES', title:'Pagar Besi Minimalis', desc:'Pagar besi dengan desain minimalis dan finishing premium.'},
+  {photo:PHOTO.house, filter:['canopy','residential'], label:'CANOPY', title:'Canopi Teras', desc:'Kanopi teras rumah dengan desain modern.'},
+  {photo:PHOTO.construction, filter:['industrial','commercial'], label:'STEEL STRUCTURES', title:'Struktur Baja Ringan', desc:'Konstruksi baja ringan untuk berbagai kebutuhan.'},
+  {photo:PHOTO.welder2, filter:['residential','commercial'], label:'GATES & FENCES', title:'Pagar Sliding', desc:'Pagar sliding otomatis dengan desain modern.'}
 ];
 const grid = document.getElementById('grid');
 function render(filter){
   grid.innerHTML = projects.filter(p=>filter==='all'||p.filter.includes(filter)).map(p=>`
     <article class="card">
-      <div class="card-thumb">${thumb(p.icon)}</div>
+      <div class="card-thumb">${photoImg(p.photo,500,p.title)}</div>
       <div class="card-body">
         <span class="card-tag">${p.label}</span>
         <h3>${p.title}</h3>
@@ -680,36 +649,22 @@ document.getElementById('pills').addEventListener('click', e=>{
 
 /* Solutions photo grid */
 const solPhotos = [
-  {icon:'jig', label:'Jigs & Fixtures'},
-  {icon:'flange', label:'Production Tools'},
-  {icon:'machine', label:'Custom Machines'},
-  {icon:'custom', label:'Machine Parts'},
-  {icon:'tooling', label:'Process Improvement Tools'}
+  {photo:PHOTO.gears, label:'Jigs & Fixtures'},
+  {photo:PHOTO.factory, label:'Production Tools'},
+  {photo:PHOTO.factory, label:'Custom Machines'},
+  {photo:PHOTO.gears, label:'Machine Parts'},
+  {photo:PHOTO.welding, label:'Process Improvement Tools'}
 ];
 const solGrid = document.getElementById('sol-photo-grid');
-solGrid.innerHTML = solPhotos.map(s=>`<div class="sol-photo">${thumb(s.icon)}<span class="cap">${s.label}</span></div>`).join('')
+solGrid.innerHTML = solPhotos.map(s=>`<div class="sol-photo">${photoImg(s.photo,400,s.label)}<span class="cap">${s.label}</span></div>`).join('')
   + `<div class="sol-photo cta-cell"><p>Siap membantu meningkatkan efisiensi produksi Anda.</p><span class="arrow"><svg class="arrow-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>`;
 
 /* About background */
-document.getElementById('ac-about-bg').innerHTML = `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="400" fill="#1D232C"/>
-  <g transform="translate(150,140)">
-    <rect x="30" y="60" width="46" height="70" rx="4" fill="#2A3140"/>
-    <circle cx="53" cy="42" r="24" fill="#2A3140"/>
-    <rect x="34" y="30" width="38" height="18" rx="9" fill="#14181F"/>
-    <path d="M76 95 L130 130" stroke="#3A4252" stroke-width="14" stroke-linecap="round"/>
-  </g>
-  <g transform="translate(255,255)">
-    <circle r="5" fill="#F27D20"/>
-    <g stroke="#E56A0F" stroke-width="2" stroke-linecap="round" opacity="0.9">
-      <line x1="0" y1="0" x2="26" y2="-14"/><line x1="0" y1="0" x2="34" y2="4"/><line x1="0" y1="0" x2="18" y2="22"/><line x1="0" y1="0" x2="-10" y2="30"/><line x1="0" y1="0" x2="-24" y2="8"/><line x1="0" y1="0" x2="8" y2="-26"/>
-    </g>
-  </g>
-</svg>`;
+document.getElementById('ac-about-bg').innerHTML = photoImg(PHOTO.welding, 700, 'Tim Rakha Jaya Teknik bekerja di bengkel fabrikasi');
 
 /* Instagram grid */
-const igIcons = ['canopy','carport','gate','steel','laser','jig','flange','machine'];
-document.getElementById('ig-grid').innerHTML = igIcons.map(i=>`<div class="ig-tile">${thumb(i)}</div>`).join('');
+const igPhotos = [PHOTO.house, PHOTO.construction, PHOTO.welder2, PHOTO.factory, PHOTO.welding, PHOTO.gears, PHOTO.house, PHOTO.welding];
+document.getElementById('ig-grid').innerHTML = igPhotos.map(p=>`<div class="ig-tile">${photoImg(p,300,'Postingan Instagram Rakha Jaya Teknik')}</div>`).join('');
 </script>
 </body>
 </html>
