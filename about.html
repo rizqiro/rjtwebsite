@@ -72,18 +72,22 @@
   .split-hero-photo{aspect-ratio:5/4;overflow:hidden;border-radius:6px;border:1px solid var(--paper-line);background:linear-gradient(155deg,var(--ink),var(--charcoal2));}
   .split-hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 
-  /* ---------- SIAPA KAMI ---------- */
-  .abt-who{padding:56px 0;border-top:1px solid var(--paper-line);}
-  .abt-who-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:44px;align-items:center;}
-  .abt-who h2{font-size:24px;}
-  .abt-who p{color:var(--steel);font-size:14px;margin-bottom:24px;max-width:460px;}
-  .abt-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  .abt-stat{text-align:center;}
-  .abt-stat .icn{width:42px;height:42px;margin:0 auto 10px;border-radius:50%;background:rgba(229,106,15,0.12);display:flex;align-items:center;justify-content:center;}
-  .abt-stat .icn svg{width:19px;height:19px;color:var(--orange-dark);}
-  .abt-stat span{font-size:12px;font-weight:600;color:var(--ink);line-height:1.35;display:block;}
-  .abt-who-photo{aspect-ratio:5/4;overflow:hidden;border-radius:6px;border:1px solid var(--paper-line);background:linear-gradient(155deg,var(--ink),var(--charcoal2));}
-  .abt-who-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* ---------- SIAPA KAMI (band foto) ---------- */
+  .abt-who{position:relative;min-height:440px;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(155deg,var(--ink),var(--charcoal2));}
+  .abt-who-bg{position:absolute;inset:0;}
+  .abt-who-bg img{width:100%;height:100%;object-fit:cover;display:block;}
+  .abt-who-scrim{position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,18,24,0.95) 0%,rgba(15,18,24,0.82) 42%,rgba(15,18,24,0.45) 75%,rgba(15,18,24,0.3) 100%);}
+  .abt-who-inner{position:relative;z-index:2;width:100%;padding:48px 0 26px;}
+  .abt-who-copy{max-width:560px;margin-bottom:34px;}
+  .abt-who-copy h2{font-size:28px;color:var(--white);}
+  .abt-who-copy .rule{margin:14px 0 16px;}
+  .abt-who-copy p{color:#C4C9D2;font-size:14.5px;line-height:1.6;}
+  .abt-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.18);}
+  .abt-cell{padding:18px 18px 22px;border-left:1px solid rgba(255,255,255,0.12);}
+  .abt-cell:first-child{border-left:none;padding-left:0;}
+  .abt-cell svg{width:18px;height:18px;color:var(--orange);margin-bottom:10px;}
+  .abt-cell b{display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--white);margin-bottom:4px;}
+  .abt-cell span{display:block;font-size:11.5px;color:var(--steel-light);line-height:1.5;}
 
   /* ---------- WORKSHOP & FASILITAS ---------- */
   .abt-workshop{padding:56px 0;background:var(--paper2);}
@@ -93,15 +97,15 @@
   .abt-cap-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .abt-cap-label{margin-top:10px;font-size:13px;font-weight:600;color:var(--ink);}
 
-  /* ---------- NILAI KAMI (dark) ---------- */
-  .abt-values{background:var(--ink);color:var(--white);padding:56px 0;}
-  .abt-values h2{font-size:22px;color:var(--white);}
-  .abt-values .rule{margin-bottom:28px;}
-  .abt-values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-  .abt-value .icn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .abt-value .icn svg{width:19px;height:19px;color:var(--orange);}
-  .abt-value h4{font-size:14.5px;color:var(--white);margin-bottom:6px;}
-  .abt-value p{font-size:12.5px;color:#9BA3AF;line-height:1.5;}
+  /* ---------- NILAI KAMI (manifesto) ---------- */
+  .abt-values{background:var(--ink);color:var(--white);padding:56px 0 60px;}
+  .abt-values h2{font-size:26px;color:var(--white);}
+  .abt-values .rule{margin-bottom:26px;}
+  .abt-values-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,0.16);}
+  .abt-value{padding:30px 34px 32px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .abt-value:nth-child(even){padding-left:34px;border-left:1px solid rgba(255,255,255,0.1);}
+  .abt-value h4{font-size:24px;color:var(--white);margin-bottom:10px;line-height:1.2;}
+  .abt-value p{font-size:13.5px;color:var(--steel-light);line-height:1.6;max-width:44ch;}
 
   /* ---------- FOOTER (shared) ---------- */
   footer{background:var(--charcoal);color:#AEB4BF;padding-top:56px;}
@@ -121,23 +125,32 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:1080px){
-    .split-hero-grid, .abt-who-grid{grid-template-columns:1fr;}
-    .abt-stat-row{grid-template-columns:repeat(2,1fr);}
+    .split-hero-grid{grid-template-columns:1fr;}
+    .abt-strip{grid-template-columns:repeat(2,1fr);}
+    .abt-cell:nth-child(odd){border-left:none;padding-left:0;}
+    .abt-cell:nth-child(n+3){border-top:1px solid rgba(255,255,255,0.12);}
     .abt-cap-grid{grid-template-columns:repeat(2,1fr);}
-    .abt-values-grid{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:980px){
     nav.primary-nav{display:none;}
     .menu-toggle{display:block;}
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
+  @media (max-width:760px){
+    .abt-values-grid{grid-template-columns:1fr;}
+    .abt-value,.abt-value:nth-child(even){padding:24px 0;border-left:none;padding-left:0;}
+    .abt-value h4{font-size:21px;}
+  }
   @media (max-width:600px){
     .wrap,.header-inner{padding-left:20px;padding-right:20px;}
     .split-hero h1{font-size:26px;}
     .split-hero .headline{font-size:19px;}
-    .abt-stat-row{grid-template-columns:1fr 1fr;}
+    .abt-who{min-height:0;}
+    .abt-who-copy h2{font-size:24px;}
+    .abt-strip{grid-template-columns:1fr;}
+    .abt-cell{border-left:none;padding-left:0;padding-right:0;border-top:1px solid rgba(255,255,255,0.12);}
+    .abt-cell:first-child{border-top:none;}
     .abt-cap-grid{grid-template-columns:1fr 1fr;}
-    .abt-values-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;}
     .btn-header{display:none;}
   }
@@ -192,33 +205,40 @@
 
 <!-- ================= SIAPA KAMI ================= -->
 <section class="abt-who">
-  <div class="wrap abt-who-grid">
-    <div>
-      <h2>Siapa Kami</h2>
-      <span class="rule"></span>
-      <p>Kami berpengalaman dalam berbagai proyek konstruksi baja ringan, kanopi, pagar, hingga pembuatan peralatan khusus untuk industri. Setiap proyek kami kerjakan dengan perencanaan matang, material pilihan, dan pengerjaan presisi.</p>
-      <div class="abt-stat-row">
-        <div class="abt-stat">
-          <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-          <span>Solusi Sesuai Kebutuhan</span>
+  <div class="abt-who-bg">
+    <!-- PLACEHOLDER PHOTO: ganti dengan foto gedung workshop Rakha Jaya Teknik -->
+    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Gedung workshop Rakha Jaya Teknik" loading="lazy" onerror="this.remove()">
+  </div>
+  <div class="abt-who-scrim"></div>
+  <div class="abt-who-inner">
+    <div class="wrap">
+      <div class="abt-who-copy">
+        <h2>Siapa Kami</h2>
+        <span class="rule"></span>
+        <p>Kami berpengalaman dalam berbagai proyek konstruksi baja ringan, kanopi, pagar, hingga pembuatan peralatan khusus untuk industri. Setiap proyek kami kerjakan dengan perencanaan matang, material pilihan, dan pengerjaan presisi.</p>
+      </div>
+      <div class="abt-strip">
+        <div class="abt-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <b>Solusi Sesuai Kebutuhan</b>
+          <span>Dirancang mengikuti kebutuhan dan anggaran Anda.</span>
         </div>
-        <div class="abt-stat">
-          <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span>
-          <span>Praktis & Fungsional</span>
+        <div class="abt-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <b>Praktis &amp; Fungsional</b>
+          <span>Mengutamakan fungsi dan kondisi nyata di lapangan.</span>
         </div>
-        <div class="abt-stat">
-          <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/></svg></span>
-          <span>Kualitas Terjamin</span>
+        <div class="abt-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/></svg>
+          <b>Kualitas Terjamin</b>
+          <span>Material pilihan dan pengerjaan presisi.</span>
         </div>
-        <div class="abt-stat">
-          <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="M3 3 2 14l6.5 6.5a1 1 0 0 0 3-3"/></svg></span>
-          <span>Komitmen pada Kepuasan Pelanggan</span>
+        <div class="abt-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="M3 3 2 14l6.5 6.5a1 1 0 0 0 3-3"/></svg>
+          <b>Komitmen pada Kepuasan</b>
+          <span>Pengerjaan tepat waktu dan hasil yang rapi.</span>
         </div>
       </div>
-    </div>
-    <div class="abt-who-photo">
-      <!-- PLACEHOLDER PHOTO: ganti dengan foto gedung workshop Rakha Jaya Teknik -->
-      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&amp;w=700&amp;auto=format&amp;fit=crop" alt="Gedung workshop Rakha Jaya Teknik" loading="lazy" onerror="this.remove()">
     </div>
   </div>
 </section>
@@ -256,22 +276,18 @@
     <span class="rule on-dark"></span>
     <div class="abt-values-grid">
       <div class="abt-value">
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span>
         <h4>Fokus pada Solusi</h4>
         <p>Kami memahami kebutuhan Anda dan memberikan solusi yang paling tepat.</p>
       </div>
       <div class="abt-value">
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
         <h4>Kerja Sama</h4>
         <p>Komunikasi terbuka dan kerja sama yang baik menjadi kunci keberhasilan setiap proyek.</p>
       </div>
       <div class="abt-value">
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/></svg></span>
         <h4>Integritas</h4>
         <p>Kejujuran, tanggung jawab, dan komitmen menjadi dasar setiap pekerjaan kami.</p>
       </div>
       <div class="abt-value">
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 0 1 14.6-4.6M20 12a8 8 0 0 1-14.6 4.6"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span>
         <h4>Terus Berkembang</h4>
         <p>Kami terus meningkatkan kemampuan dan teknologi untuk memberikan hasil terbaik.</p>
       </div>
