@@ -113,16 +113,32 @@
   .eng-more svg{width:13px;height:13px;transition:transform .15s ease;}
   .eng-more:hover svg{transform:translateX(3px);}
 
-  /* ---------- PROCESS (dark) ---------- */
-  .eng-process{padding:56px 0 60px;background:var(--ink);color:var(--white);}
+  /* ---------- PROCESS (dark, blueprint stepper) ---------- */
+  .eng-process{position:relative;overflow:hidden;padding:56px 0 60px;background:var(--ink);color:var(--white);}
+  .eng-process::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 54px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 54px);
+    -webkit-mask-image:radial-gradient(120% 80% at 50% 0%, #000 35%, transparent 80%);
+    mask-image:radial-gradient(120% 80% at 50% 0%, #000 35%, transparent 80%);
+  }
+  .eng-process > .wrap{position:relative;z-index:1;}
   .eng-process .eng-section-head h2{color:var(--white);}
-  .eng-steps-row{display:flex;justify-content:space-between;position:relative;margin-top:12px;}
-  .eng-steps-row::before{content:"";position:absolute;top:19px;left:19px;right:19px;height:1.5px;background:repeating-linear-gradient(90deg,rgba(255,255,255,0.18) 0 6px,transparent 6px 12px);}
-  .eng-step{position:relative;text-align:center;flex:1;padding:0 6px;}
-  .eng-step .num{width:38px;height:38px;border-radius:50%;background:var(--orange);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;margin:0 auto 12px;position:relative;z-index:1;}
-  .eng-step h4{font-size:12.5px;color:var(--white);margin-bottom:8px;}
-  .eng-step .icn{width:20px;height:20px;margin:0 auto 8px;color:#8890A0;}
-  .eng-step p{font-size:11px;color:#9BA3AF;line-height:1.4;}
+  .eng-dim{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .eng-dim .line{flex:1;height:1px;background:rgba(255,255,255,0.22);}
+  .eng-dim .cap{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:var(--steel-light);white-space:nowrap;}
+  .eng-dim .arrow{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;}
+  .eng-dim .arrow.l{border-right:7px solid rgba(255,255,255,0.35);}
+  .eng-dim .arrow.r{border-left:7px solid rgba(255,255,255,0.35);}
+  .eng-steps-row{display:grid;grid-template-columns:repeat(6,1fr);}
+  .eng-step{position:relative;padding:18px 14px 4px 16px;border-left:1px solid rgba(255,255,255,0.12);transition:background .16s ease;}
+  .eng-step:first-child{border-left-color:var(--orange);}
+  .eng-step::before{content:"";position:absolute;left:0;top:0;width:1px;height:14px;background:var(--orange);}
+  .eng-step:hover{background:linear-gradient(180deg,rgba(229,106,15,0.07),transparent 70%);}
+  .eng-step .num{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:24px;border:1px solid rgba(229,106,15,0.55);border-radius:2px;color:var(--orange);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:11.5px;margin-bottom:12px;padding:0 6px;}
+  .eng-step h4{font-size:13.5px;color:var(--white);margin-bottom:6px;}
+  .eng-step p{font-size:11.5px;color:var(--steel-light);line-height:1.5;padding-right:8px;}
 
   /* ---------- WORKSHOP & CAPABILITIES ---------- */
   .eng-capabilities{padding:64px 0;}
@@ -169,6 +185,7 @@
     .menu-toggle{display:block;}
     .footer-grid{grid-template-columns:1fr 1fr;}
     .eng-hero-inner{flex-direction:column;}
+    .eng-steps-row{grid-template-columns:repeat(3,1fr);}
   }
   @media (max-width:600px){
     .wrap,.header-inner{padding-left:20px;padding-right:20px;}
@@ -176,9 +193,8 @@
     .eng-card-grid{grid-template-columns:1fr;}
     .eng-card{flex-direction:column;}
     .eng-card-photo{width:100%;aspect-ratio:16/10;}
-    .eng-steps-row{flex-wrap:wrap;gap:20px;}
-    .eng-steps-row::before{display:none;}
-    .eng-step{flex:0 0 30%;}
+    .eng-steps-row{grid-template-columns:1fr;}
+    .eng-step{padding-block:14px 12px;}
     .eng-cap-grid{grid-template-columns:repeat(2,1fr);}
     .eng-cta-inner{flex-direction:column;align-items:flex-start;}
     .eng-cta-right{width:100%;}
@@ -331,41 +347,42 @@
       <div class="eyebrow on-dark">PROSES KERJA KAMI</div>
       <h2>Alur Kerja yang Terstruktur</h2>
     </div>
+    <div class="eng-dim">
+      <span class="arrow l"></span>
+      <span class="line"></span>
+      <span class="cap">ALUR PROYEK &bull; 6 TAHAP</span>
+      <span class="line"></span>
+      <span class="arrow r"></span>
+    </div>
     <div class="eng-steps-row">
       <div class="eng-step">
-        <div class="num">01</div>
+        <span class="num">01</span>
         <h4>Konsultasi</h4>
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
         <p>Memahami kebutuhan dan tujuan Anda.</p>
       </div>
       <div class="eng-step">
-        <div class="num">02</div>
+        <span class="num">02</span>
         <h4>Survei / Studi</h4>
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 21 9-9"/><path d="M12.5 15.5 8.5 11.5l7-7 4 4Z"/></svg></span>
         <p>Pengukuran lokasi atau analisis kebutuhan produksi.</p>
       </div>
       <div class="eng-step">
-        <div class="num">03</div>
+        <span class="num">03</span>
         <h4>Desain</h4>
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
         <p>Pengembangan konsep, gambar, dan solusi rekayasa.</p>
       </div>
       <div class="eng-step">
-        <div class="num">04</div>
+        <span class="num">04</span>
         <h4>Fabrikasi</h4>
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span>
         <p>Proses produksi dengan kontrol kualitas.</p>
       </div>
       <div class="eng-step">
-        <div class="num">05</div>
+        <span class="num">05</span>
         <h4>Instalasi / Pengujian</h4>
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4"/><path d="m9 14 2 2 4-4"/></svg></span>
         <p>Instalasi dan uji fungsi di lokasi atau di workshop.</p>
       </div>
       <div class="eng-step">
-        <div class="num">06</div>
+        <span class="num">06</span>
         <h4>Serah Terima</h4>
-        <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 0 0 3-3"/><path d="M3 4h8"/></svg></span>
         <p>Penyerahan hasil proyek kepada pelanggan.</p>
       </div>
     </div>
