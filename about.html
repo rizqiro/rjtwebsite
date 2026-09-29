@@ -97,16 +97,15 @@
   .abt-cap-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .abt-cap-label{margin-top:10px;font-size:13px;font-weight:600;color:var(--ink);}
 
-  /* ---------- NILAI KAMI (daftar bergaris) ---------- */
+  /* ---------- NILAI KAMI (manifesto) ---------- */
   .abt-values{background:var(--ink);color:var(--white);padding:56px 0 60px;}
   .abt-values h2{font-size:26px;color:var(--white);}
   .abt-values .rule{margin-bottom:26px;}
-  .abt-values-list{border-top:1px solid rgba(255,255,255,0.16);}
-  .abt-value{display:grid;grid-template-columns:22px minmax(140px,0.3fr) 1fr;gap:0 18px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:background .16s ease;}
-  .abt-value:hover{background:linear-gradient(90deg,rgba(229,106,15,0.08),transparent 65%);}
-  .abt-value svg{width:18px;height:18px;color:var(--orange);margin-top:2px;}
-  .abt-value h4{font-size:16px;color:var(--white);}
-  .abt-value p{font-size:13px;color:var(--steel-light);line-height:1.6;}
+  .abt-values-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,0.16);}
+  .abt-value{padding:30px 34px 32px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .abt-value:nth-child(even){padding-left:34px;border-left:1px solid rgba(255,255,255,0.1);}
+  .abt-value h4{font-size:24px;color:var(--white);margin-bottom:10px;line-height:1.2;}
+  .abt-value p{font-size:13.5px;color:var(--steel-light);line-height:1.6;max-width:44ch;}
 
   /* ---------- FOOTER (shared) ---------- */
   footer{background:var(--charcoal);color:#AEB4BF;padding-top:56px;}
@@ -138,8 +137,9 @@
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
   @media (max-width:760px){
-    .abt-value{grid-template-columns:22px 1fr;gap:6px 14px;}
-    .abt-value p{grid-column:2;}
+    .abt-values-grid{grid-template-columns:1fr;}
+    .abt-value,.abt-value:nth-child(even){padding:24px 0;border-left:none;padding-left:0;}
+    .abt-value h4{font-size:21px;}
   }
   @media (max-width:600px){
     .wrap,.header-inner{padding-left:20px;padding-right:20px;}
@@ -274,24 +274,20 @@
   <div class="wrap">
     <h2>Nilai Kami</h2>
     <span class="rule on-dark"></span>
-    <div class="abt-values-list">
+    <div class="abt-values-grid">
       <div class="abt-value">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
         <h4>Fokus pada Solusi</h4>
         <p>Kami memahami kebutuhan Anda dan memberikan solusi yang paling tepat.</p>
       </div>
       <div class="abt-value">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         <h4>Kerja Sama</h4>
         <p>Komunikasi terbuka dan kerja sama yang baik menjadi kunci keberhasilan setiap proyek.</p>
       </div>
       <div class="abt-value">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/></svg>
         <h4>Integritas</h4>
         <p>Kejujuran, tanggung jawab, dan komitmen menjadi dasar setiap pekerjaan kami.</p>
       </div>
       <div class="abt-value">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 0 1 14.6-4.6M20 12a8 8 0 0 1-14.6 4.6"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>
         <h4>Terus Berkembang</h4>
         <p>Kami terus meningkatkan kemampuan dan teknologi untuk memberikan hasil terbaik.</p>
       </div>
