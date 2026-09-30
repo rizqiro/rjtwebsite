@@ -94,32 +94,21 @@
   .section-head{max-width:560px;margin-bottom:36px;}
   .section-head h2{font-size:30px;margin-bottom:12px;}
   .section-head p{color:var(--steel);font-size:14.5px;}
-  .services-grid{display:grid;grid-template-columns:0.62fr 1fr;gap:26px;align-items:start;}
-  .svc-left{background:var(--white);border:1px solid var(--paper-line);}
-  .svc-left-inner{padding:26px;}
-  .svc-left p{color:var(--steel);font-size:14px;margin:14px 0 20px;}
-  .svc-panel{background:var(--ink);color:var(--white);}
-  .svc-panel-head{padding:20px 24px;}
-  .svc-panel-head h3{font-size:17px;color:var(--white);margin-bottom:4px;}
-  .svc-panel-head p{font-size:12.5px;color:#9BA3AF;}
-  .svc-photo-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-  .svc-photo{background:var(--white);border-top:1px solid var(--paper-line);}
-  .svc-photo-thumb{aspect-ratio:1/1;background:linear-gradient(155deg,var(--ink),var(--charcoal2));position:relative;overflow:hidden;border-right:1px solid rgba(255,255,255,0.06);}
-  .svc-photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .svc-photo-cap{padding:12px 10px;text-align:center;border-right:1px solid var(--paper-line);}
-  .svc-photo-cap span{font-size:12.5px;font-weight:600;color:var(--ink);}
-  .svc-photo:last-child .svc-photo-thumb, .svc-photo:last-child .svc-photo-cap{border-right:none;}
-
-  .eng-panel{background:var(--ink);color:var(--white);display:flex;flex-direction:column;}
-  .eng-panel-head{padding:20px 24px;}
-  .eng-panel-head h3{font-size:17px;color:var(--white);margin-bottom:4px;}
-  .eng-panel-head p{font-size:12.5px;color:#9BA3AF;}
-  .eng-icon-grid{background:var(--white);display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--paper-line);}
-  .eng-icon-item{padding:22px 12px;text-align:center;border-right:1px solid var(--paper-line);border-bottom:1px solid var(--paper-line);}
-  .eng-icon-item:nth-child(4n){border-right:none;}
-  .eng-icon-item .icn{width:38px;height:38px;margin:0 auto 10px;border:1.5px solid var(--paper-line);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-  .eng-icon-item .icn svg{width:18px;height:18px;color:var(--orange-dark);}
-  .eng-icon-item span{font-size:12px;font-weight:600;color:var(--ink);line-height:1.3;display:block;}
+  .svc-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px;}
+  .svc-top .section-head{margin-bottom:0;}
+  .svc-sheet{margin-top:34px;}
+  .svc-sheet:first-of-type{margin-top:0;}
+  .svc-sheet-head{border-top:2px solid var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0 16px;flex-wrap:wrap;}
+  .svc-sheet-head .k{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.16em;color:var(--ink);}
+  .svc-sheet-head .d{font-size:12.5px;color:var(--steel);}
+  .svc-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .svc-photo .ph{aspect-ratio:4/3;border:1px solid var(--paper-line);background:var(--paper2);overflow:hidden;}
+  .svc-photo .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .svc-photo span{display:block;padding-top:10px;font-size:13px;font-weight:600;color:var(--ink);}
+  .svc-chips{display:flex;flex-wrap:wrap;gap:10px;}
+  .svc-chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--paper-line);background:var(--white);padding:11px 16px;font-size:13px;font-weight:600;color:var(--ink);border-radius:2px;transition:border-color .16s ease;}
+  .svc-chip:hover{border-color:var(--orange);}
+  .svc-chip i{width:5px;height:5px;background:var(--orange);flex-shrink:0;}
 
   /* ---------- PROJECTS ---------- */
   .projects{padding:56px 0 72px;background:var(--paper2);}
@@ -258,7 +247,6 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:1080px){
-    .services-grid{grid-template-columns:1fr;}
     .solutions-grid{grid-template-columns:1fr;}
     .ac-grid{grid-template-columns:1fr;}
     .ig-grid{grid-template-columns:repeat(4,1fr);}
@@ -271,18 +259,19 @@
     .steps-row{grid-template-columns:repeat(3,1fr);}
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
+  @media (max-width:860px){
+    .svc-photos{grid-template-columns:repeat(2,1fr);}
+  }
   @media (max-width:600px){
     .wrap,.header-inner,.hero-inner{padding-left:20px;padding-right:20px;}
     .hero h1{font-size:32px;}
     .project-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;}
     .form-row{grid-template-columns:1fr;}
-    .eng-icon-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr;}
     .steps-row{grid-template-columns:1fr;}
     .step{padding-block:14px 12px;}
     .ig-grid{grid-template-columns:repeat(3,1fr);}
-    .svc-photo-grid{grid-template-columns:repeat(2,1fr);}
     .btn-header{display:none;}
   }
 </style>
@@ -349,42 +338,31 @@
 <!-- ================= SERVICES ================= -->
 <section class="services">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">LAYANAN KAMI</div>
-      <h2>Solusi Fabrikasi & Rekayasa</h2>
-      <p>Kami menyediakan layanan lengkap, mulai dari konstruksi ringan hingga solusi rekayasa khusus untuk industri.</p>
-    </div>
-    <div class="services-grid">
-      <div class="svc-left">
-        <div class="svc-left-inner">
-          <div class="eyebrow">SOLUSI</div>
-          <h3 style="font-size:19px;">Butuh solusi lengkap?</h3>
-          <p>Dari konsultasi awal hingga instalasi akhir, tim kami mendampingi setiap tahap proyek Anda.</p>
-          <a href="services.html" class="btn btn-outline-dark">Lihat Semua Layanan
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
+    <div class="svc-top">
+      <div class="section-head">
+        <div class="eyebrow">LAYANAN KAMI</div>
+        <h2>Solusi Fabrikasi &amp; Rekayasa</h2>
+        <p>Kami menyediakan layanan lengkap, mulai dari konstruksi ringan hingga solusi rekayasa khusus untuk industri.</p>
       </div>
-
-      <div>
-        <div class="svc-panel">
-          <div class="svc-panel-head">
-            <h3>FABRIKASI</h3>
-            <p>Konstruksi & fabrikasi untuk kebutuhan bangunan dan infrastruktur Anda.</p>
-          </div>
-        </div>
-        <div class="svc-photo-grid" id="svc-photo-grid"></div>
-      </div>
+      <a href="services.html" class="btn btn-outline-dark">Lihat Semua Layanan
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
 
-    <div class="services-grid" style="grid-template-columns:1fr;margin-top:26px;">
-      <div class="eng-panel">
-        <div class="eng-panel-head">
-          <h3>REKAYASA</h3>
-          <p>Solusi rekayasa dan manufaktur khusus untuk kebutuhan industri Anda.</p>
-        </div>
-        <div class="eng-icon-grid" id="eng-icon-grid"></div>
+    <div class="svc-sheet">
+      <div class="svc-sheet-head">
+        <span class="k">FABRIKASI</span>
+        <span class="d">Konstruksi &amp; fabrikasi untuk kebutuhan bangunan dan infrastruktur</span>
       </div>
+      <div class="svc-photos" id="svc-photos"></div>
+    </div>
+
+    <div class="svc-sheet">
+      <div class="svc-sheet-head">
+        <span class="k">REKAYASA</span>
+        <span class="d">Solusi rekayasa dan manufaktur khusus untuk kebutuhan industri</span>
+      </div>
+      <div class="svc-chips" id="svc-chips"></div>
     </div>
   </div>
 </section>
@@ -621,27 +599,24 @@ const svcPhotos = [
   {photo:PHOTO.construction, label:'Struktur Baja'},
   {photo:PHOTO.welding, label:'Fabrikasi Logam Custom'}
 ];
-document.getElementById('svc-photo-grid').innerHTML = svcPhotos.map(s=>`
+document.getElementById('svc-photos').innerHTML = svcPhotos.map(s=>`
   <div class="svc-photo">
-    <div class="svc-photo-thumb">${photoImg(s.photo,500,s.label)}</div>
-    <div class="svc-photo-cap"><span>${s.label}</span></div>
+    <div class="ph">${photoImg(s.photo,500,s.label)}</div>
+    <span>${s.label}</span>
   </div>`).join('');
 
-/* Engineering icon grid */
-const engIcons = [
-  {label:'Alat Produksi Custom', svg:'<path d="m12 2 2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8 5.7 21.2 8 13.8 2 9.4h7.6Z"/>'},
-  {label:'Jig & Fixture', svg:'<rect x="4" y="7" width="16" height="10" rx="1"/><circle cx="12" cy="12" r="3"/>'},
-  {label:'Peralatan Produksi', svg:'<rect x="3" y="8" width="18" height="10" rx="1"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/>'},
-  {label:'Komponen Mesin', svg:'<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>'},
-  {label:'Peralatan Mesin', svg:'<rect x="4" y="5" width="16" height="14" rx="1"/><path d="M8 9h8M8 13h8M8 17h4"/>'},
-  {label:'Modifikasi Peralatan', svg:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/>'},
-  {label:'Prototype & Rekayasa Custom', svg:'<circle cx="12" cy="12" r="9"/><path d="M9 12.5 11 15l4-5"/>'}
+/* Engineering service chips */
+const engServices = [
+  'Alat Produksi Custom',
+  'Jig & Fixture',
+  'Peralatan Produksi',
+  'Komponen Mesin',
+  'Peralatan Mesin',
+  'Modifikasi Peralatan',
+  'Prototype & Rekayasa Custom'
 ];
-document.getElementById('eng-icon-grid').innerHTML = engIcons.map(e=>`
-  <div class="eng-icon-item">
-    <span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${e.svg}</svg></span>
-    <span>${e.label}</span>
-  </div>`).join('');
+document.getElementById('svc-chips').innerHTML = engServices
+  .map(label=>`<span class="svc-chip"><i></i>${label}</span>`).join('');
 
 /* Projects grid + filter */
 const projects = [
