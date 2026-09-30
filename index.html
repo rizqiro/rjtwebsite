@@ -198,26 +198,21 @@
   .step h4{font-size:13.5px;color:var(--white);margin-bottom:6px;}
   .step p{font-size:11.5px;color:var(--steel-light);line-height:1.5;padding-right:8px;}
 
-  /* ---------- ABOUT + CONTACT ---------- */
-  .about-contact{padding:0 0 0;}
-  .ac-grid{display:grid;grid-template-columns:0.85fr 1fr 0.72fr;}
-  .ac-about{background:var(--ink);color:var(--white);padding:56px 40px;position:relative;overflow:hidden;}
-  .ac-about-bg{position:absolute;inset:0;opacity:0.55;background:linear-gradient(155deg,var(--charcoal2),var(--ink));}
-  .ac-about-bg img{width:100%;height:100%;object-fit:cover;display:block;}
-  .ac-about-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,31,0.6),rgba(20,24,31,0.96));}
-  .ac-about > *{position:relative;z-index:1;}
-  .ac-about h2{font-size:25px;color:var(--white);margin-bottom:14px;}
-  .ac-about p{font-size:13.5px;color:#B8BEC8;margin-bottom:28px;}
-  .ac-stats{display:flex;flex-direction:column;gap:16px;}
-  .ac-stats .st{display:flex;align-items:center;gap:12px;}
-  .ac-stats .icn{width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .ac-stats .icn svg{width:16px;height:16px;color:var(--orange);}
-  .ac-stats b{display:block;font-size:14px;color:var(--white);}
-  .ac-stats span{font-size:11.5px;color:#9BA3AF;}
+  /* ---------- ABOUT + CONTACT (band gelap) ---------- */
+  .about-contact{background:var(--charcoal);color:var(--white);border-top:3px solid var(--orange);padding:52px 0 56px;}
+  .ac-grid{display:grid;grid-template-columns:0.82fr 1.15fr 0.78fr;gap:40px;align-items:start;}
+  .ac-about h2{font-size:22px;color:var(--white);margin-bottom:12px;}
+  .ac-about > p{font-size:13.5px;color:#B8BEC8;line-height:1.6;margin-bottom:22px;}
+  .ac-stats{display:grid;gap:14px;}
+  .ac-stats .st{display:grid;grid-template-columns:20px 1fr;gap:0 12px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.12);}
+  .ac-stats .icn{display:flex;align-items:flex-start;justify-content:center;margin-top:2px;}
+  .ac-stats .icn svg{width:17px;height:17px;color:var(--orange);}
+  .ac-stats b{display:block;font-size:13.5px;color:var(--white);font-family:'Space Grotesk',sans-serif;}
+  .ac-stats .lbl > span{display:block;font-size:12px;color:var(--steel-light);margin-top:2px;}
 
-  .ac-form{background:var(--white);padding:56px 40px;}
-  .ac-form h2{font-size:23px;margin-bottom:8px;}
-  .ac-form > p{font-size:13.5px;color:var(--steel);margin-bottom:24px;}
+  .ac-form{background:var(--white);color:var(--ink);padding:28px 26px 26px;border-radius:2px;box-shadow:0 14px 34px rgba(0,0,0,0.3);}
+  .ac-form h2{font-size:21px;margin-bottom:7px;}
+  .ac-form > p{font-size:13px;color:var(--steel);margin-bottom:20px;}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
   .field label{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px;}
   .field input, .field select, .field textarea{width:100%;border:1.5px solid var(--paper-line);padding:11px 13px;font-family:inherit;font-size:13.5px;color:var(--ink);background:var(--paper);border-radius:2px;}
@@ -229,13 +224,12 @@
   .upload-btn{display:inline-flex;align-items:center;gap:8px;border:1.5px dashed var(--paper-line);padding:9px 14px;font-size:12.5px;color:var(--steel);cursor:pointer;background:var(--paper);}
   .upload-btn svg{width:14px;height:14px;}
 
-  .ac-info{background:var(--paper2);padding:56px 32px;}
-  .ac-info h3{font-size:15px;color:var(--orange-dark);margin-bottom:22px;font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;}
-  .info-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px;}
-  .info-list .icn{width:34px;height:34px;background:var(--white);border:1px solid var(--paper-line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .info-list .icn svg{width:16px;height:16px;color:var(--orange-dark);}
-  .info-list b{display:block;font-size:13px;color:var(--ink);}
-  .info-list span{display:block;font-size:12.5px;color:var(--steel);margin-top:1px;}
+  .ac-info h3{font-size:13px;color:var(--orange);margin-bottom:18px;font-family:'JetBrains Mono',monospace;letter-spacing:0.12em;}
+  .info-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:17px;}
+  .info-list .icn{width:32px;height:32px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .info-list .icn svg{width:15px;height:15px;color:var(--orange);}
+  .info-list b{display:block;font-size:13px;color:var(--white);}
+  .info-list span{display:block;font-size:12.5px;color:var(--steel-light);margin-top:1px;}
 
   /* ---------- INSTAGRAM ---------- */
   .instagram{padding:56px 0;}
@@ -486,10 +480,8 @@
 
 <!-- ================= ABOUT + CONTACT ================= -->
 <section class="about-contact" id="contact">
-  <div class="ac-grid">
+  <div class="wrap ac-grid">
     <div class="ac-about" id="about">
-      <div class="ac-about-bg" id="ac-about-bg"></div>
-      <div class="ac-about-scrim"></div>
       <div class="eyebrow on-dark">TENTANG KAMI</div>
       <h2>Rakha Jaya Teknik</h2>
       <p>Kami adalah workshop fabrikasi dan rekayasa yang berfokus pada solusi praktis untuk kebutuhan konstruksi dan industri. Dari pekerjaan sederhana hingga rekayasa yang kompleks, kami senantiasa mengutamakan kualitas, ketepatan, dan solusi yang benar-benar bermanfaat bagi pelanggan.</p>
@@ -700,9 +692,6 @@ const solPhotos = [
 const solGrid = document.getElementById('sol-photo-grid');
 solGrid.innerHTML = solPhotos.map(s=>`<div class="sol-photo">${photoImg(s.photo,400,s.label)}<span class="cap">${s.label}</span></div>`).join('')
   + `<div class="sol-photo cta-cell"><p>Siap membantu meningkatkan efisiensi produksi Anda.</p><span class="arrow"><svg class="arrow-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>`;
-
-/* About background */
-document.getElementById('ac-about-bg').innerHTML = photoImg(PHOTO.welding, 700, 'Tim Rakha Jaya Teknik bekerja di bengkel fabrikasi');
 
 /* Instagram grid */
 const igPhotos = [PHOTO.house, PHOTO.construction, PHOTO.welder2, PHOTO.factory, PHOTO.welding, PHOTO.gears, PHOTO.house, PHOTO.welding];
