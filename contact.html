@@ -195,7 +195,7 @@
     </div>
     <div class="split-hero-photo">
       <!-- PLACEHOLDER PHOTO: ganti dengan foto komponen presisi hasil fabrikasi Rakha Jaya Teknik -->
-      <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Komponen mesin presisi hasil fabrikasi" loading="lazy" onerror="this.remove()">
+      <img data-photo="gears" data-w="800" alt="Komponen mesin presisi hasil fabrikasi" loading="lazy" onerror="this.remove()">
     </div>
   </div>
 </section>
@@ -314,18 +314,13 @@
   </div>
 </footer>
 
+<script src="assets/icons.js"></script>
+<script src="assets/media.js"></script>
 <script>
-function unsplash(id, w){ return `https://images.unsplash.com/photo-${id}?q=80&w=${w||300}&auto=format&fit=crop`; }
-const igPhotos = [
-  '1449844908441-8829872d2607',
-  '1541888946425-d81bb19240f5',
-  '1590959651373-a3db0f38a961',
-  '1517420704952-d9f39e95b43e',
-  '1565793298595-6a879b1d3985',
-  '1567789884554-0b844b597180',
-  '1449844908441-8829872d2607'
-];
-document.getElementById('ig-grid').innerHTML = igPhotos.map(id=>`<div class="ig-tile"><img src="${unsplash(id,260)}" alt="Postingan Instagram Rakha Jaya Teknik" loading="lazy" onerror="this.remove()"></div>`).join('');
+/* Petak Instagram — nama foto diambil dari daftar PHOTO di assets/media.js */
+const igPhotos = ['house','construction','welder2','factory','welding','gears','house'];
+document.getElementById('ig-grid').innerHTML =
+  igPhotos.map(name=>`<div class="ig-tile">${photoImg(name,260,'Postingan Instagram Rakha Jaya Teknik')}</div>`).join('');
 </script>
 </body>
 </html>
