@@ -303,7 +303,7 @@
 <section class="hero">
   <div class="hero-bg">
     <!-- PLACEHOLDER PHOTO: ganti src dengan foto asli rumah + kanopi/carport Rakha Jaya Teknik -->
-    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Rumah modern dengan kanopi dan carport baja">
+    <img data-photo="house" data-w="1600" alt="Rumah modern dengan kanopi dan carport baja">
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
@@ -347,7 +347,7 @@
       <div class="svc-line">
         <div class="top">
           <span class="k">FABRIKASI</span>
-          <span class="n">04 LAYANAN</span>
+          <span class="n" id="count-fabrikasi"></span>
         </div>
         <p>Konstruksi baja dan metal untuk hunian, bangunan komersial, dan infrastruktur — dari pekerjaan ringan hingga struktur berskala besar.</p>
         <a href="services.html#fabrication">Lihat layanan Fabrikasi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -355,7 +355,7 @@
       <div class="svc-line">
         <div class="top">
           <span class="k">REKAYASA</span>
-          <span class="n">06 LAYANAN</span>
+          <span class="n" id="count-rekayasa"></span>
         </div>
         <p>Peralatan khusus untuk menyelesaikan kendala di lini produksi — dari ide dan gambar sampai alat yang siap dipakai di lapangan.</p>
         <a href="services.html#engineering">Lihat layanan Rekayasa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -571,40 +571,26 @@
   </div>
 </footer>
 
+<script src="assets/icons.js"></script>
+<script src="assets/media.js"></script>
+<script src="data/content.js"></script>
 <script>
-/* ---------- Foto placeholder (Unsplash, permanent CDN URL) ----------
-   Bukan ilustrasi vektor buatan tangan — ini foto sungguhan sebagai contoh tata letak.
-   GANTI URL di objek PHOTO / tiap array di bawah dengan foto asli produk & proyek Anda
-   kapan saja: cukup timpa string URL-nya, tidak perlu ubah HTML/CSS lain. */
-function unsplash(id, w){ return `https://images.unsplash.com/photo-${id}?q=80&w=${w||800}&auto=format&fit=crop`; }
-const PHOTO = {
-  house:        '1449844908441-8829872d2607', // rumah modern (kanopi/carport/teras)
-  construction: '1541888946425-d81bb19240f5', // proyek konstruksi / struktur baja
-  welding:      '1565793298595-6a879b1d3985', // percikan las / fabrikasi logam
-  welder2:      '1590959651373-a3db0f38a961', // tukang las / pagar & gerbang besi
-  factory:      '1517420704952-d9f39e95b43e', // interior pabrik / mesin produksi
-  gears:        '1567789884554-0b844b597180'  // komponen mesin / jig & fixture
-};
-function photoImg(id, w, alt){
-  return `<img src="${unsplash(id,w)}" alt="${alt}" loading="lazy" onerror="this.remove()">`;
-}
+/* Jumlah layanan pada bagian pengantar — ikut berubah sendiri
+   kalau layanan ditambah atau dihapus di data/content.js */
+function pad(n){ return String(n).padStart(2, '0'); }
+document.getElementById('count-fabrikasi').textContent = pad(SERVICES.fabrikasi.length) + ' LAYANAN';
+document.getElementById('count-rekayasa').textContent  = pad(SERVICES.rekayasa.length) + ' LAYANAN';
 
-/* Projects grid + filter */
-const projects = [
-  {photo:PHOTO.house, filter:['canopy','residential'], label:'KANOPI', title:'Kanopi Minimalis', desc:'Kanopi rumah dengan rangka baja dan atap polycarbonate.'},
-  {photo:PHOTO.house, filter:['canopy','residential'], label:'CARPORT', title:'Carport Modern', desc:'Carport kuat dan elegan untuk melindungi kendaraan.'},
-  {photo:PHOTO.welder2, filter:['residential','commercial'], label:'PAGAR & GERBANG', title:'Pagar Besi Minimalis', desc:'Pagar besi dengan desain minimalis dan finishing premium.'},
-  {photo:PHOTO.house, filter:['canopy','residential'], label:'KANOPI', title:'Kanopi Teras', desc:'Kanopi teras rumah dengan desain modern.'},
-  {photo:PHOTO.construction, filter:['industrial','commercial'], label:'STRUKTUR BAJA', title:'Struktur Baja Ringan', desc:'Konstruksi baja ringan untuk berbagai kebutuhan.'},
-  {photo:PHOTO.welder2, filter:['residential','commercial'], label:'PAGAR & GERBANG', title:'Pagar Sliding', desc:'Pagar sliding otomatis dengan desain modern.'}
-];
+/* Proyek pilihan — yang diberi  featured: true  di data/content.js */
+const projects = PROJECTS.filter(p => p.featured);
+
 const grid = document.getElementById('grid');
 function render(filter){
   grid.innerHTML = projects.filter(p=>filter==='all'||p.filter.includes(filter)).map(p=>`
     <article class="card">
       <div class="card-thumb">${photoImg(p.photo,500,p.title)}</div>
       <div class="card-body">
-        <span class="card-tag">${p.label}</span>
+        <span class="card-tag">${p.tag}</span>
         <h3>${p.title}</h3>
         <p>${p.desc}</p>
       </div>
@@ -627,20 +613,14 @@ document.getElementById('pills').addEventListener('click', e=>{
   render(btn.dataset.filter);
 });
 
-/* Solutions photo grid */
-const solPhotos = [
-  {photo:PHOTO.gears, label:'Jig & Fixture'},
-  {photo:PHOTO.factory, label:'Alat Produksi'},
-  {photo:PHOTO.factory, label:'Mesin Custom'},
-  {photo:PHOTO.gears, label:'Part Mesin'},
-  {photo:PHOTO.welding, label:'Alat Peningkatan Proses'}
-];
+/* Petak Solusi Rekayasa — diambil dari daftar rekayasa di data/content.js */
 const solGrid = document.getElementById('sol-photo-grid');
-solGrid.innerHTML = solPhotos.map(s=>`<div class="sol-photo">${photoImg(s.photo,400,s.label)}<span class="cap">${s.label}</span></div>`).join('')
+solGrid.innerHTML = SERVICES.rekayasa.slice(0,5).map(s=>
+  `<div class="sol-photo">${photoImg(s.photo,400,s.title)}<span class="cap">${s.title}</span></div>`).join('')
   + `<div class="sol-photo cta-cell"><p>Siap membantu meningkatkan efisiensi produksi Anda.</p><span class="arrow"><svg class="arrow-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>`;
 
 /* Instagram grid */
-const igPhotos = [PHOTO.house, PHOTO.construction, PHOTO.welder2, PHOTO.factory, PHOTO.welding, PHOTO.gears, PHOTO.house, PHOTO.welding];
+const igPhotos = ['house','construction','welder2','factory','welding','gears','house','welding'];
 document.getElementById('ig-grid').innerHTML = igPhotos.map(p=>`<div class="ig-tile">${photoImg(p,300,'Postingan Instagram Rakha Jaya Teknik')}</div>`).join('');
 </script>
 </body>
