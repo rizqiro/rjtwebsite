@@ -94,21 +94,19 @@
   .section-head{max-width:560px;margin-bottom:36px;}
   .section-head h2{font-size:30px;margin-bottom:12px;}
   .section-head p{color:var(--steel);font-size:14.5px;}
-  .svc-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px;}
-  .svc-top .section-head{margin-bottom:0;}
-  .svc-sheet{margin-top:34px;}
-  .svc-sheet:first-of-type{margin-top:0;}
-  .svc-sheet-head{border-top:2px solid var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0 16px;flex-wrap:wrap;}
-  .svc-sheet-head .k{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.16em;color:var(--ink);}
-  .svc-sheet-head .d{font-size:12.5px;color:var(--steel);}
-  .svc-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  .svc-photo .ph{aspect-ratio:4/3;border:1px solid var(--paper-line);background:var(--paper2);overflow:hidden;}
-  .svc-photo .ph img{width:100%;height:100%;object-fit:cover;display:block;}
-  .svc-photo span{display:block;padding-top:10px;font-size:13px;font-weight:600;color:var(--ink);}
-  .svc-chips{display:flex;flex-wrap:wrap;gap:10px;}
-  .svc-chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--paper-line);background:var(--white);padding:11px 16px;font-size:13px;font-weight:600;color:var(--ink);border-radius:2px;transition:border-color .16s ease;}
-  .svc-chip:hover{border-color:var(--orange);}
-  .svc-chip i{width:5px;height:5px;background:var(--orange);flex-shrink:0;}
+  .svc-grid{display:grid;grid-template-columns:1fr 0.92fr;gap:56px;align-items:start;}
+  .svc-intro h2{font-size:34px;line-height:1.18;margin-bottom:16px;}
+  .svc-intro h2 span{color:var(--orange-dark);}
+  .svc-intro p{font-size:14.5px;color:var(--steel);line-height:1.65;margin-bottom:26px;max-width:460px;}
+  .svc-line{display:block;border-top:2px solid var(--ink);padding-top:16px;margin-bottom:26px;}
+  .svc-line:last-child{margin-bottom:0;}
+  .svc-line .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px;}
+  .svc-line .k{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.16em;font-weight:600;color:var(--ink);}
+  .svc-line .n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange-dark);}
+  .svc-line p{font-size:13.5px;color:var(--steel);line-height:1.6;margin-bottom:12px;}
+  .svc-line a{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink);}
+  .svc-line a svg{width:13px;height:13px;color:var(--orange);transition:transform .15s ease;}
+  .svc-line a:hover svg{transform:translateX(3px);}
 
   /* ---------- PROJECTS ---------- */
   .projects{padding:56px 0 72px;background:var(--paper2);}
@@ -260,7 +258,7 @@
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
   @media (max-width:860px){
-    .svc-photos{grid-template-columns:repeat(2,1fr);}
+    .svc-grid{grid-template-columns:1fr;gap:34px;}
   }
   @media (max-width:600px){
     .wrap,.header-inner,.hero-inner{padding-left:20px;padding-right:20px;}
@@ -336,32 +334,32 @@
 
 <!-- ================= SERVICES ================= -->
 <section class="services">
-  <div class="wrap">
-    <div class="svc-top">
-      <div class="section-head">
-        <div class="eyebrow">LAYANAN KAMI</div>
-        <h2>Solusi Fabrikasi &amp; Rekayasa</h2>
-        <p>Kami menyediakan layanan lengkap, mulai dari konstruksi ringan hingga solusi rekayasa khusus untuk industri.</p>
-      </div>
-      <a href="services.html" class="btn btn-outline-dark">Lihat Semua Layanan
+  <div class="wrap svc-grid">
+    <div class="svc-intro">
+      <div class="eyebrow">LAYANAN KAMI</div>
+      <h2>Dua lini layanan.<br><span>Satu standar pengerjaan.</span></h2>
+      <p>Kami membangun struktur yang kuat untuk ruang Anda, dan menghadirkan solusi rekayasa yang tepat untuk proses produksi Anda. Keduanya dikerjakan di bengkel yang sama, oleh tim yang sama.</p>
+      <a href="services.html" class="btn btn-primary">Lihat Semua Layanan
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
-
-    <div class="svc-sheet">
-      <div class="svc-sheet-head">
-        <span class="k">FABRIKASI</span>
-        <span class="d">Konstruksi &amp; fabrikasi untuk kebutuhan bangunan dan infrastruktur</span>
+    <div>
+      <div class="svc-line">
+        <div class="top">
+          <span class="k">FABRIKASI</span>
+          <span class="n">04 LAYANAN</span>
+        </div>
+        <p>Konstruksi baja dan metal untuk hunian, bangunan komersial, dan infrastruktur — dari pekerjaan ringan hingga struktur berskala besar.</p>
+        <a href="services.html#fabrication">Lihat layanan Fabrikasi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="svc-photos" id="svc-photos"></div>
-    </div>
-
-    <div class="svc-sheet">
-      <div class="svc-sheet-head">
-        <span class="k">REKAYASA</span>
-        <span class="d">Solusi rekayasa dan manufaktur khusus untuk kebutuhan industri</span>
+      <div class="svc-line">
+        <div class="top">
+          <span class="k">REKAYASA</span>
+          <span class="n">06 LAYANAN</span>
+        </div>
+        <p>Peralatan khusus untuk menyelesaikan kendala di lini produksi — dari ide dan gambar sampai alat yang siap dipakai di lapangan.</p>
+        <a href="services.html#engineering">Lihat layanan Rekayasa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="svc-chips" id="svc-chips"></div>
     </div>
   </div>
 </section>
@@ -590,32 +588,6 @@ const PHOTO = {
 function photoImg(id, w, alt){
   return `<img src="${unsplash(id,w)}" alt="${alt}" loading="lazy" onerror="this.remove()">`;
 }
-
-/* Service fabrication photo grid */
-const svcPhotos = [
-  {photo:PHOTO.house, label:'Kanopi & Carport'},
-  {photo:PHOTO.welder2, label:'Pagar & Gerbang'},
-  {photo:PHOTO.construction, label:'Struktur Baja'},
-  {photo:PHOTO.welding, label:'Fabrikasi Logam Custom'}
-];
-document.getElementById('svc-photos').innerHTML = svcPhotos.map(s=>`
-  <div class="svc-photo">
-    <div class="ph">${photoImg(s.photo,500,s.label)}</div>
-    <span>${s.label}</span>
-  </div>`).join('');
-
-/* Engineering service chips */
-const engServices = [
-  'Alat Produksi Custom',
-  'Jig & Fixture',
-  'Peralatan Produksi',
-  'Komponen Mesin',
-  'Peralatan Mesin',
-  'Modifikasi Peralatan',
-  'Prototype & Rekayasa Custom'
-];
-document.getElementById('svc-chips').innerHTML = engServices
-  .map(label=>`<span class="svc-chip"><i></i>${label}</span>`).join('');
 
 /* Projects grid + filter */
 const projects = [
